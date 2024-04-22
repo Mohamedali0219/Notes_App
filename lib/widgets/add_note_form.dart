@@ -2,20 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/custom_elevated_buttom.dart';
 import 'package:notes_app/widgets/custom_text_form_field.dart';
 
-class BottomSheetBody extends StatelessWidget {
-  const BottomSheetBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: SingleChildScrollView(
-        child: AddNoteForm(),
-      ),
-    );
-  }
-}
-
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
     super.key,

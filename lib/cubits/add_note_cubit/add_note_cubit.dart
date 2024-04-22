@@ -7,6 +7,8 @@ import 'package:notes_app/models/note_model.dart';
 class AddNoteCubit extends Cubit<AddNoteState> {
   AddNoteCubit() : super(AddNoteInitial());
 
+  static AddNoteCubit get(context) => BlocProvider.of(context);
+
   addNote(NoteModel note) async {
     emit(AddNoteLoading());
     try {
