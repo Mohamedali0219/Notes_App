@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constant.dart';
 
 class CustomElevatedButtom extends StatelessWidget {
-  const CustomElevatedButtom({super.key, required this.onPressed});
+  const CustomElevatedButtom(
+      {super.key, required this.onPressed, this.isLoading = false});
   final Function()? onPressed;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -15,13 +17,15 @@ class CustomElevatedButtom extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           )),
-      child: const Text(
-        'Add Note',
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+      child: isLoading
+          ? const CircularProgressIndicator()
+          : const Text(
+              'Add Note',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
     );
   }
 }
