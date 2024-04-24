@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 
@@ -14,7 +15,7 @@ class NotesItem extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return const EditNoteView();
+              return EditNoteView(note: note);
             },
           ),
         );
@@ -50,6 +51,7 @@ class NotesItem extends StatelessWidget {
                 onPressed: () {
                   // it simple delete because note model extends from HiveObject
                   note.delete();
+                  NotesCubit.get(context).fetchNotes();
                 },
                 //  padding: EdgeInsets.zero,  //! dont match any thing
                 icon: const Icon(
