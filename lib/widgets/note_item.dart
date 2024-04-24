@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 
 class NotesItem extends StatelessWidget {
-  const NotesItem({super.key});
+  const NotesItem({super.key, required this.note});
 
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,16 +22,16 @@ class NotesItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
         decoration: BoxDecoration(
-          color: Colors.amber,
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Text(
-                'Mohamed ali',
-                style: TextStyle(
+              title: Text(
+                note.title,
+                style: const TextStyle(
                   fontSize: 24,
                   color: Colors.black,
                 ),
@@ -37,7 +39,7 @@ class NotesItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 24),
                 child: Text(
-                  'this is the frist note in this course of flutter and dart in 2022',
+                  note.description,
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -45,7 +47,10 @@ class NotesItem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  // it simple delete because note model extends from HiveObject
+                  note.delete();
+                },
                 //  padding: EdgeInsets.zero,  //! dont match any thing
                 icon: const Icon(
                   FontAwesomeIcons.trash,
@@ -56,7 +61,7 @@ class NotesItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 16, right: 30),
               child: Text(
-                '12/22/2022',
+                note.dateTime,
                 style: TextStyle(
                   fontSize: 14,
                   color: Colors.black.withOpacity(0.5),
