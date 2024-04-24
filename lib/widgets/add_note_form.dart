@@ -6,6 +6,7 @@ import 'package:notes_app/cubits/add_note_cubit/add_note_state.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_elevated_buttom.dart';
 import 'package:notes_app/widgets/custom_text_form_field.dart';
+import 'package:notes_app/widgets/item_color.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -45,6 +46,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
               onSaved: (value) {
                 description = value;
               }),
+          const SizedBox(
+            height: 20,
+          ),
+          const ColorListView(),
           const SizedBox(
             height: 20,
           ),
