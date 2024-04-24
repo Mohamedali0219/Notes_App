@@ -70,6 +70,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
                   } else {
                     autovalidateMode = AutovalidateMode.always;
+
                     setState(() {});
                   }
                 },

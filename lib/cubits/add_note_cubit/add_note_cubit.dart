@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constant.dart';
@@ -9,7 +10,10 @@ class AddNoteCubit extends Cubit<AddNoteState> {
 
   static AddNoteCubit get(context) => BlocProvider.of(context);
 
+  Color selectedColor = Colors.red;
+
   addNote(NoteModel note) async {
+    note.color = selectedColor.value;
     emit(AddNoteLoading());
     try {
       var noteBox =
